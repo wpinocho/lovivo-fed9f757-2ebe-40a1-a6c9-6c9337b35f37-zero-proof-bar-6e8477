@@ -45,40 +45,40 @@ export const EcommerceTemplate = ({
   const { hasCollections, loading: loadingCollections } = useCollections()
 
   const header = (
-    <div className={`py-2 ${headerClassName}`}>
+    <div className={`py-4 border-b border-border/50 backdrop-blur-sm bg-background/80 ${headerClassName}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Y2K Logo */}
           <BrandLogoLeft />
 
-          {/* Navigation */}
+          {/* Y2K Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <nav className="flex space-x-6">
               {!loadingCollections && hasCollections && (
                 <ScrollLink 
                   to="/#collections" 
-                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  className="text-foreground/70 hover:text-primary font-bold transition-colors uppercase text-sm tracking-wide"
                 >
                   Collections
                 </ScrollLink>
               )}
               <ScrollLink 
                 to="/#products" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+                className="text-foreground/70 hover:text-primary font-bold transition-colors uppercase text-sm tracking-wide"
               >
                 Products
               </ScrollLink>
               <Link 
                 to="/blog" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+                className="text-foreground/70 hover:text-primary font-bold transition-colors uppercase text-sm tracking-wide"
               >
                 Blog
               </Link>
             </nav>
           </div>
 
-          {/* Profile & Cart */}
-          <div className="flex items-center space-x-2">
+          {/* Profile & Cart with Y2K styling */}
+          <div className="flex items-center space-x-3">
             <ProfileMenu />
             
             {showCart && (
@@ -86,12 +86,12 @@ export const EcommerceTemplate = ({
                 variant="ghost"
                 size="icon"
                 onClick={openCart}
-                className="relative"
-                aria-label="Ver carrito"
+                className="relative hover:bg-primary/10 rounded-full"
+                aria-label="View cart"
               >
-                <ShoppingCart className="h-5 w-5" />
+                <ShoppingCart className="h-5 w-5 text-foreground" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-primary to-secondary text-primary-foreground text-xs font-black rounded-full h-5 w-5 flex items-center justify-center shadow-lg">
                     {totalItems > 99 ? '99+' : totalItems}
                   </span>
                 )}
@@ -103,7 +103,7 @@ export const EcommerceTemplate = ({
         {/* Page Title */}
         {pageTitle && (
           <div className="mt-6">
-            <h1 className="text-3xl font-bold text-foreground">
+            <h1 className="text-4xl font-black text-foreground">
               {pageTitle}
             </h1>
           </div>
@@ -113,30 +113,35 @@ export const EcommerceTemplate = ({
   )
 
   const footer = (
-    <div className={`bg-black text-white py-12 ${footerClassName}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className={`bg-gradient-to-br from-[#121212] via-[#1a1a1a] to-[#121212] text-white py-16 relative overflow-hidden ${footerClassName}`}>
+      {/* Y2K Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <BrandLogoLeft />
-            <p className="mt-4 text-white/70">
-              Your trusted online store
+            <div className="mb-4">
+              <span className="text-3xl font-black y2k-text-gradient">ZeroProof</span>
+            </div>
+            <p className="text-white/70 text-sm leading-relaxed">
+              Premium non-alcoholic spirits for the modern lifestyle. Zero alcohol, full flavor, infinite possibilities.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Links</h3>
-            <div className="space-y-2">
+            <h3 className="font-black mb-4 text-white text-lg uppercase tracking-wide">Quick Links</h3>
+            <div className="space-y-3">
               <Link 
                 to="/" 
-                className="block text-white/70 hover:text-white transition-colors"
+                className="block text-white/70 hover:text-primary transition-colors font-medium"
               >
                 Home
               </Link>
               <Link 
                 to="/blog" 
-                className="block text-white/70 hover:text-white transition-colors"
+                className="block text-white/70 hover:text-primary transition-colors font-medium"
               >
                 Blog
               </Link>
@@ -145,13 +150,17 @@ export const EcommerceTemplate = ({
 
           {/* Social Links */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Follow Us</h3>
+            <h3 className="font-black mb-4 text-white text-lg uppercase tracking-wide">Connect</h3>
             <SocialLinks />
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/20 text-center text-white/70">
-          <p>&copy; 2025 Your Store. All rights reserved.</p>
+        <div className="pt-8 border-t border-white/20 text-center">
+          <p className="text-white/60 text-sm">
+            &copy; 2025 <span className="font-bold text-primary">ZeroProof</span>. All rights reserved. 
+            <span className="mx-2">•</span> 
+            Crafted with ❤️ for the zero-proof lifestyle
+          </p>
         </div>
       </div>
     </div>
